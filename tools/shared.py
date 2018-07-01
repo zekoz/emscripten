@@ -1117,12 +1117,6 @@ def make_js_command(filename, engine=None, *args):
   return jsrun.make_command(filename, engine, *args)
 
 
-def run_js(filename, engine=None, *args, **kw):
-  if engine is None:
-    engine = JS_ENGINES[0]
-  return jsrun.run_js(filename, engine, *args, **kw)
-
-
 def to_cc(cxx):
   # By default, LLVM_GCC and CLANG are really the C++ versions. This gets an explicit C version
   return cxx.replace('clang++', 'clang').replace('g++', 'gcc')

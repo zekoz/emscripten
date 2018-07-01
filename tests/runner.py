@@ -36,6 +36,7 @@ sys.path += [path_from_root(''), path_from_root('third_party/websockify')]
 import tools.shared
 from tools.shared import *
 from tools.line_endings import check_line_endings
+from tools import jsrun
 
 logger = logging.getLogger(__file__)
 
@@ -515,7 +516,7 @@ class RunnerCore(unittest.TestCase):
       cwd = None
     os.chdir(self.get_dir())
     assert(check_line_endings(filename) == 0) # Make sure that we produced proper line endings to the .js file we are about to run.
-    run_js(filename, engine, args, check_timeout, stdout=open(stdout, 'w'), stderr=open(stderr, 'w'), assert_returncode=assert_returncode)
+    jsrun.run_js(filename, engine, args, check_timeout, stdout=open(stdout, 'w'), stderr=open(stderr, 'w'), assert_returncode=assert_returncode)
     if cwd is not None:
       os.chdir(cwd)
     out = open(stdout, 'r').read()
